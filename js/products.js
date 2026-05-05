@@ -164,7 +164,7 @@
     const disc = discount(product);
 
     card.innerHTML = `
-      <div class="card-visual">
+      <div class="card-visual loading">
         <div class="card-img">${getProductSVG(product)}</div>
         ${product.badge ? `<span class="badge badge-${product.badge.toLowerCase().replace(/\s/g, '-')}">${product.badge}</span>` : ''}
         <span class="disc-pill">-${disc}%</span>
@@ -190,6 +190,12 @@
         </div>
       </div>`;
 
+    // Remove skeleton after "load"
+    setTimeout(() => {
+      const visual = card.querySelector('.card-visual');
+      if (visual) visual.classList.remove('loading');
+    }, 400);
+
     // Wish toggle
     card.querySelector('.wish-btn').addEventListener('click', (e) => {
       e.stopPropagation();
@@ -203,11 +209,19 @@
     });
 
     // Add to cart
-    card.querySelector('.btn-cart').addEventListener('click', () => {
-      if (window.Cart) {
+    card.querySelector('.btn-cart').addEventListener('click', (e) => {
+      const btn = e.currentTarget;
+      if (!window.Cart || btn.classList.contains('adding')) return;
+      
+      btn.classList.add('adding');
+      btn.textContent = 'Adding...';
+      
+      setTimeout(() => {
         window.Cart.add(product.id);
-        showToast(`${product.name} added to cart`);
-      }
+        btn.classList.replace('adding', 'added');
+        btn.textContent = '✦ Added';
+        setTimeout(() => { btn.classList.remove('added'); btn.textContent = 'Add to Cart'; }, 1500);
+      }, 600);
     });
 
     return card;

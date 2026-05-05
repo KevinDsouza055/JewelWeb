@@ -220,13 +220,26 @@
   // Contact form
   document.getElementById('contactForm').addEventListener('submit', e => {
     e.preventDefault();
-    const fd = new FormData(e.target);
-    if (!fd.get('name')?.trim() || !fd.get('email')?.trim() || !fd.get('subject') || !fd.get('message')?.trim()) {
-      Products.showToast('Please fill all required fields');
-      return;
-    }
+    const form = e.target;
+    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+
+    form.querySelectorAll('.error-msg').forEach(m => m.remove());
+    inputs.forEach(input => {
+      input.classList.remove('error');
+      if (!input.value.trim()) {
+        isValid = false;
+        input.classList.add('error');
+        const err = document.createElement('span');
+        err.className = 'error-msg';
+        err.textContent = 'This field is required';
+        input.parentNode.appendChild(err);
+      }
+    });
+
+    if (!isValid) return;
     Products.showToast('Message sent! We\'ll reply within 24 hours ✦');
-    e.target.reset();
+    form.reset();
   });
 
   // FAQs
