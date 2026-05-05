@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart — AHO Jewellery</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div class="offers-bar">
+  <div class="offers-track">
+    <span>🔥 20% OFF TODAY ON ALL ORDERS</span><span>✦</span>
+    <span>FREE SHIPPING ABOVE ₹999</span><span>✦</span>
+    <span>LIMITED STOCK — SHOP NOW</span><span>✦</span>
+    <span>💎 ROYAL ANTI-TARNISH GUARANTEE</span><span>✦</span>
+    <span>🔥 20% OFF TODAY ON ALL ORDERS</span><span>✦</span>
+    <span>FREE SHIPPING ABOVE ₹999</span><span>✦</span>
+    <span>LIMITED STOCK — SHOP NOW</span><span>✦</span>
+    <span>💎 ROYAL ANTI-TARNISH GUARANTEE</span><span>✦</span>
+  </div>
+</div>
+
+<nav class="site-nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">AHO <span>✦</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Collections</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="wish-badge"></span>
+      </a>
+      <a href="cart.html" class="nav-icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge"></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="products.html">Collections</a>
+    <a href="about.html">Our Story</a>
+    <a href="contact.html">Contact</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="cart.html">Cart</a>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <div class="page-banner">
+    <h1>Your Cart</h1>
+    <p>Review your selection before checkout</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Cart</span>
+    </div>
+  </div>
+  <div class="container">
+    <div id="cartRoot"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">AHO <span style="color:var(--gold)">✦</span></a>
+        <p>Royal anti-tarnish jewellery crafted for women who carry elegance as a way of life.</p>
+      </div>
+      <div class="footer-col"><h4>Collections</h4><ul>
+        <li><a href="products.html?cat=necklaces">Necklaces</a></li>
+        <li><a href="products.html?cat=rings">Rings</a></li>
+        <li><a href="products.html?cat=earrings">Earrings</a></li>
+        <li><a href="products.html?cat=bracelets">Bracelets</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Support</h4><ul>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 AHO Jewellery. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+(function(){
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => { const o = mob.classList.toggle('open'); ham.setAttribute('aria-expanded', o); });
+  Cart.renderCartPage(document.getElementById('cartRoot'));
+})();
+</script>
+</body>
+</html>

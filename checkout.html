@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout — AHO Jewellery</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div class="offers-bar">
+  <div class="offers-track">
+    <span>🔒 SECURE CHECKOUT</span><span>✦</span>
+    <span>FREE SHIPPING ABOVE ₹999</span><span>✦</span>
+    <span>💎 ROYAL ANTI-TARNISH GUARANTEE</span><span>✦</span>
+    <span>🔒 SECURE CHECKOUT</span><span>✦</span>
+    <span>FREE SHIPPING ABOVE ₹999</span><span>✦</span>
+    <span>💎 ROYAL ANTI-TARNISH GUARANTEE</span><span>✦</span>
+  </div>
+</div>
+
+<nav class="site-nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">AHO <span>✦</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Collections</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="wish-badge"></span>
+      </a>
+      <a href="cart.html" class="nav-icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrapper">
+  <div class="page-banner">
+    <h1>Secure Checkout</h1>
+    <p>Complete your order safely and easily</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="cart.html">Cart</a><span>/</span><span>Checkout</span>
+    </div>
+  </div>
+
+  <div class="container" id="checkoutMain">
+    <!-- Rendered by JS -->
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">AHO <span style="color:var(--gold)">✦</span></a>
+        <p>Royal anti-tarnish jewellery crafted for women who carry elegance as a way of life.</p>
+      </div>
+      <div class="footer-col"><h4>Collections</h4><ul>
+        <li><a href="products.html?cat=necklaces">Necklaces</a></li>
+        <li><a href="products.html?cat=rings">Rings</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Support</h4><ul>
+        <li><a href="cart.html">My Cart</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 AHO Jewellery. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+(function(){
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  const root = document.getElementById('checkoutMain');
+
+  function renderCheckout() {
+    const items = Cart.getItems();
+    if (!items.length) {
+      root.innerHTML = `
+        <div class="empty-cart">
+          <div class="empty-icon">🛒</div>
+          <h2>Your cart is empty</h2>
+          <p>Add some pieces before checking out</p>
+          <a href="products.html" class="btn-primary">Shop Now</a>
+        </div>`;
+      return;
+    }
+
+    const fmt = Products.formatPrice;
+    const subtotal = Cart.total();
+    const shipping = subtotal >= 999 ? 0 : 149;
+    const grand = subtotal + shipping;
+
+    // Build item rows for summary
+    let itemRows = items.map(item => {
+      const p = Products.getById(item.id);
+      if (!p) return '';
+      return `
+        <div class="co-item">
+          <div class="co-thumb">${Products.getProductSVG(p)}</div>
+          <div class="co-item-info">
+            <h4>${p.name}</h4>
+            <span>Qty: ${item.qty} · ${p.category}</span>
+          </div>
+          <div class="co-item-price">${fmt(p.price * item.qty)}</div>
+        </div>`;
+    }).join('');
+
+    root.innerHTML = `
+      <div class="checkout-layout">
+        <div class="checkout-form-section">
+          <h2>Delivery Details</h2>
+
+          <form id="checkoutForm" novalidate>
+            <div class="form-section">
+              <h3>Personal Information</h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Priya" required/>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Sharma" required/>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" placeholder="priya@example.com" required/>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Shipping Address</h3>
+              <div class="form-grid">
+                <div class="form-group" style="grid-column:1/-1;">
+                  <label for="address">Street Address *</label>
+                  <input type="text" id="address" name="address" placeholder="123, MG Road, Indiranagar" required/>
+                </div>
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input type="text" id="city" name="city" placeholder="Bengaluru" required/>
+                </div>
+                <div class="form-group">
+                  <label for="state">State *</label>
+                  <select id="state" name="state" required>
+                    <option value="">Select State</option>
+                    <option>Andhra Pradesh</option><option>Delhi</option>
+                    <option>Gujarat</option><option>Karnataka</option>
+                    <option>Kerala</option><option>Maharashtra</option>
+                    <option>Rajasthan</option><option>Tamil Nadu</option>
+                    <option>Telangana</option><option>Uttar Pradesh</option>
+                    <option>West Bengal</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="pincode">Pincode *</label>
+                  <input type="text" id="pincode" name="pincode" placeholder="560001" maxlength="6" required/>
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input type="text" id="country" name="country" value="India" readonly style="background:var(--ivory-warm);"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Payment Method</h3>
+              <div class="payment-options">
+                <label class="pay-option">
+                  <input type="radio" name="payment" value="upi" checked/>
+                  <span class="pay-option-icon">📱</span>
+                  <div>
+                    <div class="pay-option-label">UPI</div>
+                    <div style="font-size:0.72rem;color:var(--mist);">GPay, PhonePe, Paytm</div>
+                  </div>
+                </label>
+                <label class="pay-option">
+                  <input type="radio" name="payment" value="card"/>
+                  <span class="pay-option-icon">💳</span>
+                  <div>
+                    <div class="pay-option-label">Credit / Debit Card</div>
+                    <div style="font-size:0.72rem;color:var(--mist);">Visa, Mastercard, RuPay</div>
+                  </div>
+                </label>
+                <label class="pay-option">
+                  <input type="radio" name="payment" value="netbanking"/>
+                  <span class="pay-option-icon">🏦</span>
+                  <div>
+                    <div class="pay-option-label">Net Banking</div>
+                    <div style="font-size:0.72rem;color:var(--mist);">All major banks</div>
+                  </div>
+                </label>
+                <label class="pay-option">
+                  <input type="radio" name="payment" value="cod"/>
+                  <span class="pay-option-icon">💵</span>
+                  <div>
+                    <div class="pay-option-label">Cash on Delivery</div>
+                    <div style="font-size:0.72rem;color:var(--mist);">Pay when you receive</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary full-btn" style="margin-top:1.5rem;font-size:0.9rem;padding:1rem;">
+              Place Order — ${fmt(grand)}
+            </button>
+            <p style="font-size:0.75rem;color:var(--mist);text-align:center;margin-top:0.75rem;">
+              🔒 Your information is encrypted and secure
+            </p>
+          </form>
+        </div>
+
+        <aside class="checkout-summary">
+          <h3>Order Summary</h3>
+          ${itemRows}
+          <div style="margin-top:1.25rem;">
+            <div class="summary-row"><span>Subtotal</span><span>${fmt(subtotal)}</span></div>
+            <div class="summary-row"><span>Shipping</span><span>${shipping === 0 ? '<em style="color:#5c9e6b">Free</em>' : fmt(shipping)}</span></div>
+            <div class="summary-row total-row"><span>Total</span><span>${fmt(grand)}</span></div>
+          </div>
+          ${shipping > 0 ? `<p style="font-size:0.78rem;color:#5c9e6b;text-align:center;margin-top:0.5rem;">Add ${fmt(999-subtotal)} more for free shipping</p>` : ''}
+          <div style="margin-top:1.5rem;padding:1rem;background:var(--ivory-warm);border-radius:12px;">
+            <p style="font-size:0.8rem;font-weight:600;color:var(--charcoal);margin-bottom:0.5rem;">✦ AHO Guarantee</p>
+            <p style="font-size:0.75rem;color:var(--mocha);line-height:1.7;">Every piece comes with our lifetime anti-tarnish guarantee and signature gift packaging.</p>
+          </div>
+        </aside>
+      </div>`;
+
+    document.getElementById('checkoutForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const required = ['firstName','lastName','email','phone','address','city','state','pincode'];
+      for (const f of required) {
+        if (!fd.get(f)?.trim()) {
+          Products.showToast('Please fill all required fields');
+          return;
+        }
+      }
+      // Success
+      Cart.clear();
+      root.innerHTML = `
+        <div class="order-success" style="padding:6rem 2rem;">
+          <div class="order-success-icon">✦</div>
+          <h1>Order Placed!</h1>
+          <p>Thank you, ${fd.get('firstName')}! Your order has been placed successfully. You will receive a confirmation at <strong>${fd.get('email')}</strong>.</p>
+          <p style="font-size:0.85rem;color:var(--mist);">Estimated delivery: 2–5 business days</p>
+          <a href="products.html" class="btn-primary" style="margin-top:1rem;">Continue Shopping</a>
+        </div>`;
+    });
+  }
+
+  renderCheckout();
+})();
+</script>
+</body>
+</html>
