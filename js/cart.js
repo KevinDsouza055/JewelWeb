@@ -1,8 +1,8 @@
-// AHO Jewellery — Cart Module
+// Jewel Jewellery — Cart Module
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'aho_cart';
+  const STORAGE_KEY = 'jewel_cart';
 
   function load() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }

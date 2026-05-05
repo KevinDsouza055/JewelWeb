@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   AHO JEWELLERY — ROYAL ANTI-TARNISH
+   JEWEL JEWELLERY — ROYAL ANTI-TARNISH
    Global Stylesheet
 ═══════════════════════════════════════ */
 
@@ -743,7 +743,7 @@ ul { list-style: none; }
 /* ─────────────────────────────────────
    TOAST
 ───────────────────────────────────── */
-#aho-toast {
+#jewel-toast {
   position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
   background: var(--charcoal); color: var(--gold-light);
   padding: 0.8rem 1.8rem; border-radius: 50px;

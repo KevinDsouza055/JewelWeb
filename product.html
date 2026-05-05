@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Product — AHO Jewellery</title>
+  <title>Product — Jewel Jewellery</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    @media (max-width: 768px) {
+      .product-detail-layout { grid-template-columns: 1fr !important; gap: 2.5rem; }
+      .pd-visual { position: static; }
+      .pd-thumbs { justify-content: center; }
+      .pd-actions-row { flex-direction: column; align-items: stretch !important; }
+      .pd-qty { width: 100%; justify-content: space-between; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -23,7 +36,7 @@
 
 <nav class="site-nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">AHO <span>✦</span></a>
+    <a href="index.html" class="nav-logo">Jewel <span>✦</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html" class="active">Collections</a></li>
@@ -62,7 +75,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo">AHO <span style="color:var(--gold)">✦</span></a>
+        <a href="index.html" class="nav-logo">Jewel <span style="color:var(--gold)">✦</span></a>
         <p>Royal anti-tarnish jewellery crafted for women who carry elegance as a way of life.</p>
       </div>
       <div class="footer-col"><h4>Collections</h4><ul>
@@ -80,7 +93,7 @@
         <li><a href="wishlist.html">Wishlist</a></li>
       </ul></div>
     </div>
-    <div class="footer-bottom"><span>© 2025 AHO Jewellery. All rights reserved.</span></div>
+    <div class="footer-bottom"><span>© 2025 Jewel Jewellery. All rights reserved.</span></div>
   </div>
 </footer>
 
@@ -111,7 +124,7 @@
       return;
     }
 
-    document.title = `${p.name} — AHO Jewellery`;
+    document.title = `${p.name} — Jewel Jewellery`;
 
     const disc = Math.round((1 - p.price / p.originalPrice) * 100);
     const inWishlist = Wishlist.has(p.id);
@@ -157,7 +170,7 @@
               <li>Royal anti-tarnish treatment — lasts years</li>
               <li>Ethically sourced metals and gemstones</li>
               <li>Hallmarked purity certification included</li>
-              <li>Signature AHO gift packaging</li>
+              <li>Signature Jewel gift packaging</li>
               <li>Free shipping on this order</li>
             </ul>
 

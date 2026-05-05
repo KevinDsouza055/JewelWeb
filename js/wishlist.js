@@ -1,8 +1,8 @@
-// AHO Jewellery — Wishlist Module
+// Jewel Jewellery — Wishlist Module
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'aho_wishlist';
+  const STORAGE_KEY = 'jewel_wishlist';
 
   function load() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }

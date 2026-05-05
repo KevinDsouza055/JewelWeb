@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AHO Jewellery — Royal Anti-Tarnish Collection</title>
-  <meta name="description" content="Discover AHO Jewellery's royal anti-tarnish collection — exquisite necklaces, rings, earrings and bracelets crafted for lasting elegance."/>
+  <title>Jewel Jewellery — Royal Anti-Tarnish Collection</title>
+  <meta name="description" content="Discover Jewel Jewellery's royal anti-tarnish collection — exquisite necklaces, rings, earrings and bracelets crafted for lasting elegance."/>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    @media (max-width: 768px) {
+      .hero { flex-direction: column-reverse; text-align: center; padding: 2rem 1rem; gap: 2rem; }
+      .hero-text { padding: 0; }
+      .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+      .hero-stats { justify-content: center; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .featured-section .container { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .cat-grid, .product-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -38,7 +56,7 @@
 <!-- NAV -->
 <nav class="site-nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">AHO <span>✦</span></a>
+    <a href="index.html" class="nav-logo">Jewel <span>✦</span></a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="products.html">Collections</a></li>
@@ -225,10 +243,10 @@
   <section class="featured-section">
     <div class="container">
       <div class="featured-text">
-        <p class="section-eyebrow">Why AHO</p>
+        <p class="section-eyebrow">Why Jewel</p>
         <h2 class="section-title" style="text-align:left;">Crafted to<br/><em>Last Forever</em></h2>
         <div class="section-divider" style="margin:1.2rem 0;"></div>
-        <p>Every AHO piece undergoes a 7-layer anti-tarnish treatment — a proprietary process that ensures your jewellery retains its brilliance for years, not months.</p>
+        <p>Every Jewel piece undergoes a 7-layer anti-tarnish treatment — a proprietary process that ensures your jewellery retains its brilliance for years, not months.</p>
         <p>We source ethically, craft meticulously, and deliver a luxury experience from first touch to final unboxing.</p>
         <a href="about.html" class="btn-primary" style="margin-top:0.5rem;">Discover Our Process</a>
       </div>
@@ -267,7 +285,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo">AHO <span style="color:var(--gold)">✦</span></a>
+        <a href="index.html" class="nav-logo">Jewel <span style="color:var(--gold)">✦</span></a>
         <p>Royal anti-tarnish jewellery crafted for women who carry elegance as a way of life. Handmade in India, shipped worldwide.</p>
       </div>
       <div class="footer-col">
@@ -299,7 +317,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 AHO Jewellery. All rights reserved.</span>
+      <span>© 2025 Jewel Jewellery. All rights reserved.</span>
       <div class="social-links">
         <a href="#" class="social-btn" aria-label="Instagram">𝕀</a>
         <a href="#" class="social-btn" aria-label="Facebook">𝔽</a>
@@ -309,6 +327,18 @@
     </div>
   </div>
 </footer>
+
+<!-- PROMO MODAL -->
+<div class="modal-overlay" id="promoModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
+    <p class="section-eyebrow">Limited Time Offer</p>
+    <h2 class="section-title">Special <em>Discount</em></h2>
+    <div class="section-divider"></div>
+    <p class="modal-text">Get 5% discount on all orders till 28th May 2026</p>
+    <button class="btn-primary full-btn" id="modalAction">Claim My Discount</button>
+  </div>
+</div>
 
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
@@ -358,6 +388,26 @@
     Products.showToast('Thank you for joining the Royal Circle!');
     e.target.reset();
   };
+
+  // Promo Modal Logic
+  const promoModal = document.getElementById('promoModal');
+  const closeBtn = document.getElementById('closeModal');
+  const actionBtn = document.getElementById('modalAction');
+
+  function hideModal() {
+    promoModal.classList.remove('active');
+  }
+
+  if (!sessionStorage.getItem('jewel_promo_seen')) {
+    setTimeout(() => {
+      promoModal.classList.add('active');
+      sessionStorage.setItem('jewel_promo_seen', 'true');
+    }, 1500); // 1.5s delay for better UX
+  }
+
+  closeBtn.addEventListener('click', hideModal);
+  actionBtn.addEventListener('click', hideModal);
+  promoModal.addEventListener('click', (e) => { if(e.target === promoModal) hideModal(); });
 })();
 </script>
 </body>

@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Story — AHO Jewellery</title>
+  <title>Our Story — Jewel Jewellery</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    @media (max-width: 768px) {
+      .about-story-grid { grid-template-columns: 1fr !important; gap: 3rem !important; text-align: center; }
+      .about-visual-panel { order: -1; height: 300px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .newsletter-section h2 { font-size: 1.8rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -23,7 +32,7 @@
 
 <nav class="site-nav" id="mainNav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">AHO <span>✦</span></a>
+    <a href="index.html" class="nav-logo">Jewel <span>✦</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html">Collections</a></li>
@@ -65,13 +74,13 @@
 
   <!-- ABOUT STORY -->
   <section class="about-story">
-    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 2rem;">
+    <div class="container about-story-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 2rem;">
       <div class="about-story-text">
         <p class="section-eyebrow" style="font-size:0.7rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Est. 2018, Jaipur</p>
         <h2 style="font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--charcoal);line-height:1.2;margin-bottom:1.5rem;">Born from the <em style="font-style:italic;color:var(--gold-dark);">Pink City</em></h2>
-        <p>AHO was founded in 2018 by Aishwarya Rao, a gemologist and third-generation jeweller from Jaipur. After years of watching beloved heirloom pieces lose their lustre, Aishwarya set out to create jewellery that would remain as radiant on the hundredth wearing as it was on the first.</p>
-        <p>The name "AHO" is a Sanskrit exclamation of wonder — the feeling we want every customer to experience when they open their AHO parcel. Each piece is individually crafted by our team of master artisans in our Jaipur atelier, using responsibly sourced metals and gemstones.</p>
-        <p>Our proprietary 7-layer anti-tarnish process — developed over three years of research — is what sets AHO apart. It means your jewellery doesn't just look beautiful on day one; it continues to shine through years of daily wear, through monsoons and celebrations, through every chapter of your story.</p>
+        <p>Jewel was founded in 2018 by Aishwarya Rao, a gemologist and third-generation jeweller from Jaipur. After years of watching beloved heirloom pieces lose their lustre, Aishwarya set out to create jewellery that would remain as radiant on the hundredth wearing as it was on the first.</p>
+        <p>The name "Jewel" is a Sanskrit exclamation of wonder — the feeling we want every customer to experience when they open their Jewel parcel. Each piece is individually crafted by our team of master artisans in our Jaipur atelier, using responsibly sourced metals and gemstones.</p>
+        <p>Our proprietary 7-layer anti-tarnish process — developed over three years of research — is what sets Jewel apart. It means your jewellery doesn't just look beautiful on day one; it continues to shine through years of daily wear, through monsoons and celebrations, through every chapter of your story.</p>
         <a href="products.html" class="btn-primary" style="margin-top:1rem;">Discover the Collection</a>
       </div>
       <div class="about-visual-panel">
@@ -119,7 +128,7 @@
         <div class="value-card">
           <div class="value-icon">✦</div>
           <h3>Eternal Brilliance</h3>
-          <p>Our 7-layer anti-tarnish treatment is not a coating — it's a transformation. Every AHO piece undergoes 72 hours of treatment before it leaves our atelier, guaranteeing lustre that lasts years, not months.</p>
+          <p>Our 7-layer anti-tarnish treatment is not a coating — it's a transformation. Every Jewel piece undergoes 72 hours of treatment before it leaves our atelier, guaranteeing lustre that lasts years, not months.</p>
         </div>
         <div class="value-card">
           <div class="value-icon">🌿</div>
@@ -144,7 +153,7 @@
         <div class="value-card">
           <div class="value-icon">💎</div>
           <h3>Lifetime Guarantee</h3>
-          <p>We stand behind every piece we make. If your AHO jewellery tarnishes within 2 years of normal wear, we will re-treat, repair, or replace it — no questions asked.</p>
+          <p>We stand behind every piece we make. If your Jewel jewellery tarnishes within 2 years of normal wear, we will re-treat, repair, or replace it — no questions asked.</p>
         </div>
       </div>
     </div>
@@ -155,7 +164,7 @@
     <div class="container">
       <div class="section-header">
         <p class="section-eyebrow">How We Make It</p>
-        <h2 class="section-title">The AHO <em>Process</em></h2>
+        <h2 class="section-title">The Jewel <em>Process</em></h2>
         <div class="section-divider"></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:1rem;">
@@ -197,7 +206,7 @@
   <section class="team-section" style="background:var(--ivory-warm);padding:5rem 0;">
     <div class="container">
       <div class="section-header">
-        <p class="section-eyebrow">The People Behind AHO</p>
+        <p class="section-eyebrow">The People Behind Jewel</p>
         <h2 class="section-title">Meet the <em>Team</em></h2>
         <div class="section-divider"></div>
       </div>
@@ -206,7 +215,7 @@
           <div class="team-avatar" style="background:linear-gradient(135deg,var(--cream),var(--nude));">👩</div>
           <h4>Aishwarya Rao</h4>
           <span>Founder & Creative Director</span>
-          <p style="font-size:0.82rem;color:var(--mocha);margin-top:0.75rem;line-height:1.75;">A third-generation jeweller and certified gemologist from Jaipur, Aishwarya's vision drives every AHO design.</p>
+          <p style="font-size:0.82rem;color:var(--mocha);margin-top:0.75rem;line-height:1.75;">A third-generation jeweller and certified gemologist from Jaipur, Aishwarya's vision drives every Jewel design.</p>
         </div>
         <div class="team-card">
           <div class="team-avatar" style="background:linear-gradient(135deg,var(--cream),var(--nude));">👨</div>
@@ -218,7 +227,7 @@
           <div class="team-avatar" style="background:linear-gradient(135deg,var(--cream),var(--nude));">👩‍🔬</div>
           <h4>Dr. Preethi Nair</h4>
           <span>Chief Innovation Officer</span>
-          <p style="font-size:0.82rem;color:var(--mocha);margin-top:0.75rem;line-height:1.75;">Dr. Nair developed AHO's proprietary anti-tarnish process, holding three patents in precious metal surface treatment.</p>
+          <p style="font-size:0.82rem;color:var(--mocha);margin-top:0.75rem;line-height:1.75;">Dr. Nair developed Jewel's proprietary anti-tarnish process, holding three patents in precious metal surface treatment.</p>
         </div>
       </div>
     </div>
@@ -242,7 +251,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo">AHO <span style="color:var(--gold)">✦</span></a>
+        <a href="index.html" class="nav-logo">Jewel <span style="color:var(--gold)">✦</span></a>
         <p>Royal anti-tarnish jewellery crafted for women who carry elegance as a way of life.</p>
       </div>
       <div class="footer-col"><h4>Collections</h4><ul>
@@ -260,7 +269,7 @@
         <li><a href="wishlist.html">Wishlist</a></li>
       </ul></div>
     </div>
-    <div class="footer-bottom"><span>© 2025 AHO Jewellery. All rights reserved.</span></div>
+    <div class="footer-bottom"><span>© 2025 Jewel Jewellery. All rights reserved.</span></div>
   </div>
 </footer>
 

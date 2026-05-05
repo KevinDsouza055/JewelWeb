@@ -1,4 +1,4 @@
-// AHO Jewellery - Products Data & Rendering
+// Jewel Jewellery - Products Data & Rendering
 (function () {
   'use strict';
 
@@ -214,10 +214,10 @@
   }
 
   function showToast(msg) {
-    let t = document.getElementById('aho-toast');
+    let t = document.getElementById('jewel-toast');
     if (!t) {
       t = document.createElement('div');
-      t.id = 'aho-toast';
+      t.id = 'jewel-toast';
       document.body.appendChild(t);
     }
     t.textContent = msg;
