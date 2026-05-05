@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     @media (max-width: 768px) {
-      .about-story-grid { grid-template-columns: 1fr !important; gap: 3rem !important; text-align: center; }
+      .about-story-grid { grid-template-columns: 1fr !important; gap: 2rem !important; text-align: center; padding: 2rem 1rem !important; }
       .about-visual-panel { order: -1; height: 300px; }
-      .values-grid { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .values-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .team-grid { grid-template-columns: 1fr; gap: 2rem; }
       .newsletter-section h2 { font-size: 1.8rem; }
+      .process-timeline { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+      .process-step { padding: 1rem !important; }
     }
   </style>
 </head>
@@ -74,13 +76,13 @@
 
   <!-- ABOUT STORY -->
   <section class="about-story">
-    <div class="container about-story-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 2rem;">
+    <div class="container about-story-grid" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:center;padding:6rem 2rem;">
       <div class="about-story-text">
         <p class="section-eyebrow" style="font-size:0.7rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Est. 2018, Jaipur</p>
-        <h2 style="font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--charcoal);line-height:1.2;margin-bottom:1.5rem;">Born from the <em style="font-style:italic;color:var(--gold-dark);">Pink City</em></h2>
-        <p>Jewel was founded in 2018 by Aishwarya Rao, a gemologist and third-generation jeweller from Jaipur. After years of watching beloved heirloom pieces lose their lustre, Aishwarya set out to create jewellery that would remain as radiant on the hundredth wearing as it was on the first.</p>
-        <p>The name "Jewel" is a Sanskrit exclamation of wonder — the feeling we want every customer to experience when they open their Jewel parcel. Each piece is individually crafted by our team of master artisans in our Jaipur atelier, using responsibly sourced metals and gemstones.</p>
-        <p>Our proprietary 7-layer anti-tarnish process — developed over three years of research — is what sets Jewel apart. It means your jewellery doesn't just look beautiful on day one; it continues to shine through years of daily wear, through monsoons and celebrations, through every chapter of your story.</p>
+        <h2 style="font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:var(--charcoal);line-height:1.1;margin-bottom:1.5rem;">Born from the <em style="font-style:italic;color:var(--gold-dark);">Pink City</em></h2>
+        <p style="font-size:1.05rem;color:var(--mocha);line-height:1.8;">Jewel was founded in 2018 by Aishwarya Rao, a gemologist and third-generation jeweller from Jaipur. After years of watching beloved heirloom pieces lose their lustre, Aishwarya set out to create jewellery that would remain as radiant on the hundredth wearing as it was on the first.</p>
+        <p style="font-size:1rem;color:var(--mocha);line-height:1.8;margin-top:1rem;">The name "Jewel" is a Sanskrit exclamation of wonder — the feeling we want every customer to experience when they open their Jewel parcel. Each piece is individually crafted by our team of master artisans in our Jaipur atelier, using responsibly sourced metals and gemstones.</p>
+        <p style="font-size:1rem;color:var(--mocha);line-height:1.8;margin-top:1rem;">Our proprietary 7-layer anti-tarnish process — developed over three years of research — is what sets Jewel apart. It means your jewellery doesn't just look beautiful on day one; it continues to shine through years of daily wear, through monsoons and celebrations, through every chapter of your story.</p>
         <a href="products.html" class="btn-primary" style="margin-top:1rem;">Discover the Collection</a>
       </div>
       <div class="about-visual-panel">
@@ -167,8 +169,8 @@
         <h2 class="section-title">The Jewel <em>Process</em></h2>
         <div class="section-divider"></div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:1rem;">
-        <div style="text-align:center;padding:2rem 1rem;">
+      <div class="process-timeline" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem;">
+        <div class="process-step" style="text-align:center;padding:2.5rem 1.5rem;background:white;border-radius:24px;box-shadow:var(--shadow-sm);">
           <div style="width:64px;height:64px;border-radius:50%;background:var(--cream);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">⛏️</div>
           <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:400;margin-bottom:0.5rem;">1. Sourcing</h4>
           <p style="font-size:0.83rem;color:var(--mocha);line-height:1.75;">Ethically sourced metals & certified gemstones from our trusted supplier network.</p>
