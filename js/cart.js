@@ -75,13 +75,17 @@
 
     const fmt = window.Products.formatPrice;
 
-    let rows = '';
+   let rows = '';
     items.forEach(item => {
       const p = window.Products.getById(item.id);
       if (!p) return;
       rows += `
         <div class="cart-row" data-id="${p.id}">
-          <div class="cart-thumb">${window.Products.getProductSVG(p)}</div>
+          <div class="cart-thumb">
+            <img src="${p.image || window.Products.CAT_IMAGES[p.category]}" alt="${p.name}" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none">${window.Products.getProductSVG(p)}</div>
+          </div>
           <div class="cart-details">
             <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
             <span class="cart-cat">${p.category}</span>

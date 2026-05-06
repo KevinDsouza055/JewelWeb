@@ -190,6 +190,7 @@ ul { list-style: none; }
   padding: 6rem 2rem 4rem;
   max-width: 1340px; margin: 0 auto;
   position: relative;
+  background: radial-gradient(circle at 70% 50%, rgba(201,168,76,0.05) 0%, transparent 50%);
 }
 .hero::before {
   content: '';
@@ -241,13 +242,18 @@ ul { list-style: none; }
 }
 .hero-orb-inner {
   width: 82%; height: 82%; border-radius: 50%;
-  background: var(--ivory);
+  background: var(--ivory) url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce33e?auto=format&fit=crop&q=80&w=800') center/cover no-repeat;
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; gap: 1rem;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.1);
+  border: 4px solid var(--white);
 }
 .hero-gemstone {
-  width: 110px; height: 110px;
+  width: 140px; height: 140px;
   position: relative; animation: gemFloat 4s ease-in-out infinite;
+  background: url('https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&q=80&w=400') center/cover no-repeat;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
 }
 @keyframes gemFloat {
   0%, 100% { transform: translateY(0); }
@@ -332,20 +338,24 @@ ul { list-style: none; }
 }
 .cat-card:hover .cat-card-bg { transform: scale(1.06); }
 
-@media (max-width: 480px) {
-  .cat-svg { width: 80px; }
-  .cat-card { height: 240px; }
+.cat-card-bg.necklaces { background: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800') center/cover; }
+.cat-card-bg.rings { background: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800') center/cover; }
+.cat-card-bg.earrings { background: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=800') center/cover; }
+.cat-card-bg.bracelets { background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800') center/cover; }
+
+.cat-card-bg::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
 }
-.cat-card-bg.necklaces { background: linear-gradient(135deg, #C9A84C22 0%, #EDD98A44 50%, #C9A84C 100%); }
-.cat-card-bg.rings { background: linear-gradient(135deg, #D4AF8C22 0%, #F0E0C844 50%, #D4AF8C 100%); }
-.cat-card-bg.earrings { background: linear-gradient(135deg, #B8A9C922 0%, #EDE8F544 50%, #B8A9C9 100%); }
-.cat-card-bg.bracelets { background: linear-gradient(135deg, #C4B08C22 0%, #F5F0E844 50%, #C4B08C 100%); }
+
 .cat-svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 120px; opacity: 0.85; }
 .cat-card-label {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 2rem 1.5rem 1.5rem;
-  background: linear-gradient(to top, rgba(26,22,20,0.85) 0%, transparent 100%);
+  background: transparent;
   color: white;
+  z-index: 2;
 }
 .cat-card-label h3 {
   font-family: var(--font-display); font-size: 1.4rem; font-weight: 400;
@@ -388,8 +398,14 @@ ul { list-style: none; }
   overflow: hidden;
 }
 .card-img {
-  width: 150px; height: 150px;
+  width: 100%; height: 100%;
   filter: drop-shadow(0 8px 16px rgba(139,105,20,0.25));
+  transition: transform var(--transition);
+}
+.card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
   transition: transform var(--transition);
 }
 .product-card:hover .card-img { transform: scale(1.08) translateY(-4px); }
@@ -524,6 +540,11 @@ ul { list-style: none; }
   box-shadow: var(--shadow-md); overflow: hidden;
 }
 .pd-main-img svg { width: 60%; height: 60%; filter: drop-shadow(0 12px 24px rgba(139,105,20,0.3)); }
+.pd-main-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .pd-thumbs { display: flex; gap: 0.75rem; margin-top: 1rem; }
 .pd-thumb {
   width: 72px; height: 72px; border-radius: 14px;
@@ -575,6 +596,11 @@ ul { list-style: none; }
 .cart-row:hover { box-shadow: var(--shadow-md); }
 .cart-thumb { width: 80px; height: 80px; border-radius: 14px; background: var(--ivory-warm); display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .cart-thumb svg { width: 58px; height: 58px; }
+.cart-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .cart-details h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 400; margin-bottom: 0.2rem; }
 .cart-details h3 a:hover { color: var(--gold-dark); }
 .cart-cat { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; display: block; margin-bottom: 0.3rem; }
@@ -655,6 +681,7 @@ ul { list-style: none; }
 .co-item { display: flex; align-items: center; gap: 0.9rem; padding: 0.65rem 0; border-bottom: 1px solid var(--cream); }
 .co-thumb { width: 48px; height: 48px; border-radius: 10px; background: var(--ivory-warm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .co-thumb svg { width: 36px; height: 36px; }
+.co-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
 .co-item-info { flex: 1; }
 .co-item-info h4 { font-size: 0.88rem; font-weight: 500; line-height: 1.3; }
 .co-item-info span { font-size: 0.75rem; color: var(--mist); }
@@ -668,7 +695,7 @@ ul { list-style: none; }
 .about-story-text p { color: var(--mocha); line-height: 1.9; margin-bottom: 1.2rem; }
 .about-visual-panel {
   height: 480px; border-radius: 32px;
-  background: linear-gradient(135deg, var(--ivory-warm), var(--cream));
+  background: url('https://images.unsplash.com/photo-1450297350677-623de575f31c?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -677,8 +704,15 @@ ul { list-style: none; }
   width: 280px; height: 280px; border-radius: 50%;
   background: conic-gradient(from 0deg, var(--gold-light), var(--gold), var(--gold-dark), var(--gold-light));
   opacity: 0.35; position: absolute;
+  backdrop-filter: blur(10px);
 }
 .about-gem { width: 160px; height: 160px; position: relative; z-index: 1; animation: gemFloat 5s ease-in-out infinite; }
+.about-gem img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+}
 .values-section { padding: 5rem 0; background: var(--ivory-warm); }
 .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .value-card { background: white; border-radius: 20px; padding: 2.5rem 2rem; box-shadow: var(--shadow-card); }
@@ -701,6 +735,13 @@ ul { list-style: none; }
 .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; padding: 4rem 0 6rem; align-items: start; }
 .contact-info h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; margin-bottom: 1rem; }
 .contact-info p { color: var(--mocha); line-height: 1.9; margin-bottom: 2rem; }
+.contact-info-visual {
+  width: 100%; height: 200px;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  background: url('https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&q=80&w=800') center/cover no-repeat;
+  box-shadow: var(--shadow-md);
+}
 .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
 .contact-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
 .contact-detail-text h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
@@ -713,7 +754,7 @@ ul { list-style: none; }
    PAGE HEADER BANNER
 ───────────────────────────────────── */
 .page-banner {
-  background: linear-gradient(135deg, var(--charcoal) 0%, var(--espresso) 100%);
+  background: linear-gradient(rgba(26,22,20,0.7), rgba(26,22,20,0.7)), url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce33e?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
   padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden;
 }
 .page-banner::after {

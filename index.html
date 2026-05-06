@@ -114,31 +114,7 @@
     <div class="hero-visual">
       <div class="hero-orb">
         <div class="hero-orb-inner">
-          <div class="hero-gemstone">
-            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="gemGrad" cx="35%" cy="30%" r="70%">
-                  <stop offset="0%" stop-color="#F5E6C8"/>
-                  <stop offset="40%" stop-color="#EDD98A"/>
-                  <stop offset="100%" stop-color="#8B6914"/>
-                </radialGradient>
-                <filter id="gemGlow">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <g filter="url(#gemGlow)">
-                <polygon points="55,5 95,35 85,90 25,90 15,35" fill="url(#gemGrad)" stroke="#C9A84C" stroke-width="1.5"/>
-                <polygon points="55,5 95,35 55,55" fill="rgba(255,255,255,0.25)"/>
-                <polygon points="55,5 15,35 55,55" fill="rgba(255,255,255,0.1)"/>
-                <polygon points="25,90 85,90 55,55" fill="rgba(139,105,20,0.3)"/>
-                <line x1="55" y1="5" x2="55" y2="90" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                <line x1="15" y1="35" x2="95" y2="35" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                <line x1="15" y1="35" x2="55" y2="55" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-                <line x1="95" y1="35" x2="55" y2="55" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
-              </g>
-            </svg>
-          </div>
+          <div class="hero-gemstone"></div>
           <p class="hero-badge-ring">Since 2018</p>
         </div>
       </div>
@@ -373,7 +349,9 @@
     const card = document.createElement('div');
     card.className = 'feat-card';
     card.innerHTML = `
-      <div class="feat-card-thumb" style="background:linear-gradient(135deg,var(--ivory-warm),var(--cream));">${Products.getProductSVG(p)}</div>
+      <div class="feat-card-thumb" style="background:linear-gradient(135deg,var(--ivory-warm),var(--cream));">
+        <img src="${p.image || Products.CAT_IMAGES[p.category]}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">
+      </div>
       <div class="feat-card-info">
         <h4>${p.name}</h4>
         <span>${Products.formatPrice(p.price)}</span>
